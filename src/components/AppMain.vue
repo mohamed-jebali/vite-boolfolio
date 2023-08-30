@@ -1,7 +1,31 @@
 <script>
+import axios from 'axios';
 
 export default{
+  data() {
+    return {
+      apiUrl:'',
+      projects: []
+    }
+  },
+  methods: {
+    getApi(){
+      axios.get(this.apiUrl, {
+      params: {
 
+      }
+    })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    })  
+    }
+    },
+    created() {
+      this.getApi();
+    },
 }
 </script>
 

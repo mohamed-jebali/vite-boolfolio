@@ -4,7 +4,7 @@ import axios from 'axios';
 export default{
   data() {
     return {
-      apiUrl:'',
+      apiUrl:'http://127.0.0.1:8000/api/projects',
       projects: []
     }
   },
@@ -15,8 +15,9 @@ export default{
 
       }
     })
-    .then(function (response) {
-      console.log(response);
+    .then((response) => {
+      console.log(this.response.results.data);
+      this.projects = this.response.results.data;
     })
     .catch(function (error) {
       console.log(error);

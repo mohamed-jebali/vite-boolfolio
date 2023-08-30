@@ -40,12 +40,13 @@ export default{
 
 <template>
   <div class="container">
-    <div class="row mx-auto">
+    <div class="row justify-content-between p-4 p-md-0">
       <AppProjectCard v-for="project in projects"
       :title='project.title'
       :description='project.description'
       :slug='project.slug'
       :image='project.image'
+      :type='project.type.name'
       />
    </div>
   </div>

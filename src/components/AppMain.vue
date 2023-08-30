@@ -16,8 +16,8 @@ export default{
       }
     })
     .then((response) => {
-      console.log(this.response.results.data);
-      this.projects = this.response.results.data;
+      console.log(response.data);
+      this.projects = response.data;
     })
     .catch(function (error) {
       console.log(error);

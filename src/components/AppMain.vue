@@ -1,7 +1,15 @@
 <script>
 import axios from 'axios';
+import AppProjectCard from './AppProjectCard.vue'
 
 export default{
+  name:'AppMain',
+  components:{
+    AppProjectCard,
+  },
+  props:{
+    projects:Array,
+  },
   data() {
     return {
       apiUrl:'http://127.0.0.1:8000/api/projects',
@@ -16,8 +24,8 @@ export default{
       }
     })
     .then((response) => {
-      console.log(response.data);
-      this.projects = response.data;
+      console.log(response.data.results.data);
+      this.projects = response.data.results.data;
     })
     .catch(function (error) {
       console.log(error);
@@ -32,11 +40,14 @@ export default{
 
 <template>
   <div class="container">
-    <div class="row">
-      <h1 class="text-center">
-        Main
-      </h1>
-    </div>
+    <div class="row mx-auto">
+      <AppProjectCard v-for="project in projects"
+      :title='project.title'
+      :description='project.description'
+      :slug='project.slug'
+      :image='project.image'
+      />
+   </div>
   </div>
 </template>
 

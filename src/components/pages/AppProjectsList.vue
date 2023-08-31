@@ -2,11 +2,7 @@
   <div class="container">
     <div class="row justify-content-between p-4 p-md-0">
      <AppProjectCard v-for="project in store.projects"
-     :title='project.title'
-     :description='project.description'
-     :slug='project.slug'
-     :image='project.image'
-     :type='project.type.name'
+     :project='project'
      @click="$router.push({ name: 'projects.show', params: { slug: project.slug} })"/>
   </div>
   </div>
@@ -49,6 +45,7 @@ export default {
   },
   props:{
     projects:Array,
+    project:Object
   },
 }
 </script>

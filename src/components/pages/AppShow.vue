@@ -1,7 +1,8 @@
 <template>
     <div class="row mx-auto">
         <div class="card col-8">
-            <AppProjectCard :project="project"/>
+            <AppProjectCard :project="project"
+            />
         </div>
     </div>
 </template>
@@ -17,7 +18,7 @@ export default {
        return {
            apiUrl:'http://127.0.0.1:8000',
            store,
-           project
+           project : {}
        }
    },
    methods: {
@@ -26,7 +27,7 @@ export default {
                axios.get(`${this.apiUrl}/api/projects/${this.$route.params.slug}`).then((response) => {
                  console.log(response);
                  console.log(this.$route.params.slug);
-                 this.store.projects = response.data.results;
+                 this.project = response.data.results;
              }).catch(function (error) {
                  // handle error
                  console.log(error);
@@ -40,9 +41,13 @@ export default {
     created() {
         this.getShow();
     },
+    name:'AppShow',
     components:{
         AppProjectCard,
         AppNotFound
+    },
+    props:{
+        project:Object
     }
 }
 </script>

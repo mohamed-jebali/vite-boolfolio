@@ -13,7 +13,7 @@
 </template>
 <script>
 
-import AppProjectCard from './AppProjectCard.vue'
+import AppProjectCard from '../AppProjectCard.vue'
 import { store } from '../../store';
 import axios from 'axios';
 
@@ -25,7 +25,7 @@ export default {
     }
   },
     methods: {
-    getApi(){
+    getProjects(){
       axios.get(this.apiUrl, {
       params: {
 
@@ -41,7 +41,7 @@ export default {
     }
     },
     created() {
-      this.getApi();
+      this.getProjects();
     },
     name:'AppProjectList',
     components:{

@@ -10,7 +10,31 @@
 </div>
 </template>
 <script>
+import { store } from '../store';
+import axios from 'axios';
 export default {
+    data() {
+        return {
+            apiUrl:'http://127.0.0.1:8000/api/projects',
+            store,
+        }
+    },
+    methods: {
+        getApi(){
+      axios.get(this.apiUrl, {
+      params: {
+
+      }
+    })
+    .then((response) => {
+      console.log(response.data.results.data);
+      this.store.projects = response.data.results.data;
+    })
+    .catch(function (error) {
+      console.log(error);
+    })  
+    }
+    },
     props:{
         title : String,
         description : String,

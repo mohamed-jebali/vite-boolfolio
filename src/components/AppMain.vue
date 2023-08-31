@@ -1,6 +1,6 @@
 <script>
 import axios from 'axios';
-import AppProjectList from './AppProjectsList.vue'
+import AppProjectList from './pages/AppProjectsList.vue'
 import { store } from '../store.js';
 
 export default{

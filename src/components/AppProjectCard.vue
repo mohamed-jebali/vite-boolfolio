@@ -41,6 +41,7 @@ export default {
         slug : String,
         image : String,
         type : String,
+
     }
 }
 </script>

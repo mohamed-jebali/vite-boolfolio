@@ -7,7 +7,7 @@
      :slug='project.slug'
      :image='project.image'
      :type='project.type.name'
-     />
+     @click="$router.push({ name: 'projects.show', params: { slug: project.slug} })"/>
   </div>
   </div>
 </template>

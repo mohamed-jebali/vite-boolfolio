@@ -1,14 +1,16 @@
 <template>
-    <div class="row mx-auto">
-        <div class="card col-8">
-            <AppProjectCard :project="project"
-            />
+    <div class="container">
+        <h1 class="text-center mb-4">
+            Selected Project
+        </h1>
+        <div class="row justify-content-center">
+                <AppProjectCard v-if="project" :project="project"
+                />
         </div>
     </div>
 </template>
 
 <script>
-import { store } from '../../store';
 import axios from 'axios';
 import AppProjectCard from '../AppProjectCard.vue'
 import AppNotFound from '../pages/AppNotFound.vue'
@@ -17,38 +19,29 @@ export default {
    data() {
        return {
            apiUrl:'http://127.0.0.1:8000',
-           store,
-           project : {}
+           project:false
        }
    },
+   name:'AppShow',
+    components:{
+        AppProjectCard,
+        AppNotFound
+    },
    methods: {
         getShow(){
-           if(response.data.success){
+               console.log(this.$route.params.slug);
                axios.get(`${this.apiUrl}/api/projects/${this.$route.params.slug}`).then((response) => {
                  console.log(response);
-                 console.log(this.$route.params.slug);
                  this.project = response.data.results;
              }).catch(function (error) {
                  // handle error
                  console.log(error);
              });
-           }
-           else{
-            this.$router.push({name: 'not-found'})
-           } 
         }
     },
     created() {
         this.getShow();
     },
-    name:'AppShow',
-    components:{
-        AppProjectCard,
-        AppNotFound
-    },
-    props:{
-        project:Object
-    }
 }
 </script>
 <style lang="scss">
